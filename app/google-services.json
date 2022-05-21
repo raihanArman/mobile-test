@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "592827856524",
+    "project_id": "mobile-test-56eaf",
+    "storage_bucket": "mobile-test-56eaf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592827856524:android:d5398402783791e5776da9",
+        "android_client_info": {
+          "package_name": "com.raydev.mobile_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592827856524-ao3hq58jqnfjbihrg801lmeihelmcn5h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB797oUqYRP2YBSavrm-2NxnclO8ullP3k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592827856524-ao3hq58jqnfjbihrg801lmeihelmcn5h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
