@@ -2,4 +2,9 @@
     <string name="app_name">Daftar User</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="network_offline">Anda sedang offline</string>
+    <string name="loading_data">Loading ...</string>
+    <string name="title_add_user">Tambah User</string>
+    <string name="success_save">Berhasil Tambah User</string>
+    <string name="failed_save">Gagal Tambah User</string>
 </resources>

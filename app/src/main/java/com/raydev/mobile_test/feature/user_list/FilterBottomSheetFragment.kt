@@ -82,7 +82,7 @@ class FilterBottomSheetFragment : BaseBottomSheet<FragmentFilterBottomSheetBindi
                     setDataSpinner(response.data)
                 }
                 is ResponseState.Error->{
-
+                    toast(response.errorMessage)
                 }
             }
         }

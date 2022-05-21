@@ -48,16 +48,15 @@ class UserAddViewModel @Inject constructor(
                         when (it.state) {
                             WorkInfo.State.SUCCEEDED -> _observableAddUser.postValue(
                                 ResponseState.Success(
-                                    "Berhasil Simpan"
+                                    "Berhasil Tambah User"
                                 )
                             )
                             WorkInfo.State.FAILED -> _observableAddUser.postValue(
                                 ResponseState.Error(
-                                    "Gagal simpan"
+                                    "Gagal Tambah User"
                                 )
                             )
                             WorkInfo.State.RUNNING -> _observableAddUser.postValue(ResponseState.Loading())
-                            else -> _observableAddUser.postValue(ResponseState.Error("Gagal simpan"))
                         }
                     }
                 }

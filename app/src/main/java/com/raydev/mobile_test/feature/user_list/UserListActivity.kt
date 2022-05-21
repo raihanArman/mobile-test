@@ -55,6 +55,7 @@ class UserListActivity : BaseActivity<ActivityUserListBinding>(),SearchView.OnQu
                     setData(response.data)
                 }
                 is ResponseState.Error->{
+                    toast(response.errorMessage)
                     dataIsEmpty()
                 }
             }
@@ -108,7 +109,7 @@ class UserListActivity : BaseActivity<ActivityUserListBinding>(),SearchView.OnQu
     }
 
     private fun searchThroughDatabase(query: String) {
-        if(query != ""){
+        if(query.isNotEmpty()){
             val userSearch = userList.filter {
                 it.name.lowercase().contains(query.lowercase())
             }

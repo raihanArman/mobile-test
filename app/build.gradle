@@ -82,7 +82,7 @@ dependencies {
     implementation "androidx.hilt:hilt-work:$hiltWorkManager"
 
     //Firebase Performance Monitoring
-    implementation 'com.google.firebase:firebase-perf:19.0.9'
+    implementation "com.google.firebase:firebase-perf:$firebasePerf"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

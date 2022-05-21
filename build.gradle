@@ -12,6 +12,7 @@ buildscript {
     ext.hiltWorkManager = '1.0.0'
     ext.hiltViewModel = '1.0.0-alpha03'
     ext.hiltCompiler = '1.0.0'
+    ext.firebasePerf = '19.0.9'
 
     repositories {
         google()

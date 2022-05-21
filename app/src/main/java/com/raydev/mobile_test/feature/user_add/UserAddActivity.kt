@@ -1,17 +1,15 @@
 package com.raydev.mobile_test.feature.user_add
 
 import android.app.ProgressDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import com.raydev.mobile_test.R
 import com.raydev.mobile_test.base.BaseActivity
 import com.raydev.mobile_test.data.model.City
-import com.raydev.mobile_test.data.model.User
 import com.raydev.mobile_test.data.request.UserRequest
 import com.raydev.mobile_test.databinding.ActivityUserAddBinding
-import com.raydev.mobile_test.feature.user_list.UserViewModel
 import com.raydev.mobile_test.util.CheckConnection
 import com.raydev.mobile_test.util.ResponseState
 import com.raydev.mobile_test.util.ext.toast
@@ -29,19 +27,19 @@ class UserAddActivity : BaseActivity<ActivityUserAddBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.title = "Tambah User"
+        supportActionBar?.title = getString(R.string.title_add_user)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         progressDialog = ProgressDialog(this)
-        progressDialog.setMessage("Loading ...")
+        progressDialog.setMessage(getString(R.string.loading_data))
 
         setupObserve()
         getCities()
 
         binding.btnAdd.setOnClickListener {
             if(checkConnection.isOnline()) addUser()
-            else toast("Anda sedang offline")
+            else toast(getString(R.string.network_offline))
 
         }
 
@@ -119,5 +117,12 @@ class UserAddActivity : BaseActivity<ActivityUserAddBinding>() {
 
     override fun dataIsExist() {
         progressDialog.dismiss()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == android.R.id.home){
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
