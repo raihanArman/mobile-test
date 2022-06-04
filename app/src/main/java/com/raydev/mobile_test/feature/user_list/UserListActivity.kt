@@ -60,6 +60,10 @@ class UserListActivity : BaseActivity<ActivityUserListBinding>(),SearchView.OnQu
                 }
             }
         }
+
+        viewModel.getFilter.observe(this){
+            setData(it)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -110,17 +114,7 @@ class UserListActivity : BaseActivity<ActivityUserListBinding>(),SearchView.OnQu
 
     private fun searchThroughDatabase(query: String) {
         if(query.isNotEmpty()){
-            val userSearch = userList.filter {
-                it.name.lowercase().contains(query.lowercase())
-            }
-            userAdapter.setUserList(userSearch)
-
-            if(userSearch.isEmpty()) dataIsEmpty()
-            else dataIsExist()
-
-        }else{
-            dataIsExist()
-            userAdapter.setUserList(userList)
+            viewModel.searchQueryFlow.value = query
         }
     }
 

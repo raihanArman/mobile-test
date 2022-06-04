@@ -15,6 +15,7 @@ import com.raydev.mobile_test.domain.repository.DataRepository
 import com.raydev.mobile_test.util.CheckConnection
 import com.raydev.mobile_test.util.NetworkBoundResource
 import com.raydev.mobile_test.util.ResponseState
+import com.raydev.mobile_test.util.SortType
 import com.raydev.mobile_test.work.UserHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -79,15 +80,8 @@ class DataRepositoryImpl @Inject constructor(
         return userHelper.addUser(user)
     }
 
-
-    override fun sortAscending(city: String): Flow<List<User>> {
-        return localDataSource.sortAscending("%$city%").map {
-            UserMapper.mapEntitiesToDomain(it)
-        }
-    }
-
-    override fun sortDescending(city: String): Flow<List<User>> {
-        return localDataSource.sortDescending("%$city%").map {
+    override fun getUserFilter(name: String, city: String, sortType: SortType): Flow<List<User>> {
+        return localDataSource.getUserFilter(name, city, sortType).map {
             UserMapper.mapEntitiesToDomain(it)
         }
     }

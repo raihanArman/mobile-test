@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.raydev.mobile_test.R
 import com.raydev.mobile_test.base.BaseBottomSheet
@@ -17,6 +18,8 @@ import com.raydev.mobile_test.util.ResponseState
 import com.raydev.mobile_test.util.SortType
 import com.raydev.mobile_test.util.ext.toast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -46,8 +49,8 @@ class FilterBottomSheetFragment : BaseBottomSheet<FragmentFilterBottomSheetBindi
     }
 
     private fun setupView() {
-        viewModel.sortTypeLiveData.observe(viewLifecycleOwner){
-            when(it){
+        viewLifecycleOwner.lifecycleScope.launch {
+            when(viewModel.sortTypeFlow.first()){
                 SortType.ASCENDING ->{
                     binding.rbAsc.isChecked = true
                 }
@@ -68,7 +71,9 @@ class FilterBottomSheetFragment : BaseBottomSheet<FragmentFilterBottomSheetBindi
             SortType.DESCENDING
         else
             SortType.ASCENDING
-        viewModel.filterUser(sortType, binding.spCity.selectedItemPosition)
+//        viewModel.filterUser(sortType, binding.spCity.selectedItemPosition)
+        viewModel.sortTypeFlow.value = sortType
+        viewModel.citySelectedFlow.value = viewModel.cityList[binding.spCity.selectedItemPosition].name
         dismiss()
     }
 
